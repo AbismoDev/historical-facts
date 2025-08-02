@@ -9,6 +9,37 @@
     <title>Fatos históricos</title>
 </head>
 <body>
+
+    <main>
+        <section>
+            <div class="container">
+                <div class="container--app">
+                    <div class="container--texto">
+                        <h1>Fatos Históricos</h1>
+                        <p>Insira a seguir uma data para descobrir uma curiosidade ou um fato histórico referente a data escolhida.</p>
+                    </div>
+                    <form id="form">
+                        <div class="container--input">
+                            <label for="data--historica">Escolha uma data:</label>
+                            <input type="date" name="data--historica" id="data--historica">
+                        </div>
+                        <button type="submit">Pesquisar</button>
+                    </form>
+                    <div class="container--res" id="res">
+                        <div class="container--resposta sucesso">
+                            <p>Fato historico: No dia de hoje....</p>
+                        </div>
+                        <div class="container--resposta falha">
+                            <p>Insira uma data válida para continuar</p>
+                        </div>
+                        <div class="container--resposta aviso">
+                            <p>Nenhum evento histórico econtrado para esta data em nossa base de dados.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     
     <script src="assets/js/index.js"></script>
 </body>
