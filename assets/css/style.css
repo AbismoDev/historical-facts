@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;  
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 1024px;
+    margin:  0 auto;
+    display: flex;
+    width: 100%;
+}
+
+.cor--roxo {
+    color: #2b082c;
+}
+
+.container--app {
+    flex-direction: column;
+    align-items: center;
+    max-width: 700px;
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.container--texto {
+    flex-direction: column;
+    text-align: center;
+    max-width: 500px;
+    display: flex;
+    gap: 5px;
+}
+
+.container--texto h1 {
+    color: #2b082c;
+    font-size: 32px;
+}
+
+.container--texto p {
+    color: #2b082c;
+}
+
+.container--app form {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.container--input {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    gap: 6px;
+}
+
+.container--input input {
+    text-align: center;
+    color: #2b082c;
+    max-width: 200px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    height: 35px;
+    width: 100%;
+}
+
+.container--app form button {
+    background-color: #644375;
+    border-radius: 5px;
+    font-weight: 500;
+    max-width: 200px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    height: 40px;
+    width: 100%;
+    border: 0;
+}
+
+.container--res {
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+}
+
+.container--resposta {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.sucesso {    
+    background-color: rgb(165, 255, 165);
+    border: 1px solid green;
+}
+
+.falha {        
+    background-color: rgb(255, 165, 165);
+    border: 1px solid red;
+}
+
+.aviso {
+    background-color: rgb(249, 255, 165);
+    border: 1px solid yellow;
+}
