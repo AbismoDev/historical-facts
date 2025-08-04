@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Fatos históricos</title>
+</head>
+<body>
+
+    <main>
+        <section>
+            <div class="container">
+                <div class="container--app">
+                    <div class="container--texto">
+                        <h1>Fatos Históricos</h1>
+                        <p>Insira a seguir uma data para descobrir uma curiosidade ou um fato histórico referente a data escolhida.</p>
+                    </div>
+                    <form id="form">
+                        <div class="container--input">
+                            <label for="data--historica">Escolha uma data:</label>
+                            <input type="date" name="data--historica" id="data--historica">
+                        </div>
+                        <button type="submit">Pesquisar</button>
+                        <button type="button" class="btn--aleatorio" id="btn--aleatorio">Fato Histórico ou Curiosidade Aleatorio</button>
+                    </form>
+                    <div class="container--res" id="res"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="assets/js/index.js"></script>
+</body>
+</html>
