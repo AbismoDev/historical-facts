@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const form = document.querySelector("#form");
+    const btnAleatorio = document.querySelector("#btn--aleatorio");
     const res = document.querySelector("#res");
 
     form.addEventListener("submit", (e) => {
@@ -117,6 +118,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         eventosFiltrados.forEach((item) => (eventosFiltrados.length > 1) ? res.innerHTML +=  exibeMensagem(item, 0, "sucesso") : res.innerHTML = exibeMensagem(item, 0, "sucesso"));
     });
+
+    btnAleatorio.addEventListener('click', () => {
+        const randomEvento = Math.floor(Math.random() * listaEventos.length);
+        res.innerHTML = exibeMensagem(listaEventos[randomEvento], 0, "sucesso");
+    })
 
     function filtraEventos(valorData) {
         const dataEvento = new Date(valorData + "T00:00:00");
