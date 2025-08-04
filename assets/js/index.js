@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    listaEventos = [
+    const listaEventos = [
         {
             dia: 4, 
             mes: 1, 
@@ -61,12 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
             evento: "Em 1945, os Estados Unidos lançaram uma bomba atômica sobre a cidade de Nagasaki, no Japão, três dias após o bombardeio de Hiroshima, levando à rendição japonesa e ao fim da Segunda Guerra Mundial."
         },
         {
-            dia: 9, 
-            mes: 8, 
-            tipo: "Fato Histórico", 
-            evento: "Teste"
-        },
-        {
             dia: 2, 
             mes: 9, 
             tipo: "Curiosidade", 
@@ -108,48 +102,47 @@ document.addEventListener("DOMContentLoaded", () => {
         const valorDataEvento = inputData.value; 
 
         if(valorDataEvento === "") {
-            // Aqui vamos chamar o erro
-            res.innerHTML = `                
-                <div class="container--resposta falha">
-                    <p>Insira uma data válida para continuar.</p>
-                </div>
-            `
+            const msgErro = "Insira uma data para saber o evento ou curiosidade!";
+            res.innerHTML = exibeMensagem(0, msgErro, "falha");
+            return;
+        }     
+
+        const eventosFiltrados = filtraEventos(valorDataEvento);
+
+        if(eventosFiltrados.length === 0) {
+            const msgAviso = "Nenhum evento histórico econtrado para esta data em nossa base de dados.";
+            res.innerHTML = exibeMensagem(0, msgAviso, "aviso");
             return;
         }
 
-        const dataEvento = new Date(valorDataEvento + "T00:00:00");
+        eventosFiltrados.forEach((item) => (eventosFiltrados.length > 1) ? res.innerHTML +=  exibeMensagem(item, 0, "sucesso") : res.innerHTML = exibeMensagem(item, 0, "sucesso"));
+    });
+
+    function filtraEventos(valorData) {
+        const dataEvento = new Date(valorData + "T00:00:00");
         const diaEvento = dataEvento.getDate();
         const mesEvento = dataEvento.getMonth() + 1;
 
-        // console.log("dia: ", diaEvento, " mês: ", mesEvento);
+        return listaEventos.filter((evento) => evento.dia === diaEvento && evento.mes === mesEvento);
+    }
 
-        const eventosFiltrados = listaEventos.filter((evento) => evento.dia === diaEvento && evento.mes === mesEvento);
-        console.log(eventosFiltrados);
-
-        if(eventosFiltrados.length === 0) {
-            // Aqui vamos chamar o aviso
-            res.innerHTML = `
-                <div class="container--resposta aviso">
-                    <p>Nenhum evento histórico econtrado para esta data em nossa base de dados.</p>
+    function exibeMensagem(obj, msg, tipo) {
+        let containerMsg;
+        if(tipo === "falha" || tipo === "aviso") {
+            containerMsg = `                
+                <div class="container--resposta ${tipo}">
+                    <p>${msg}</p>
                 </div>
-            `
-            return;
+            `;
         }
-
-        // Aqui vamos chamar o sucesso
-        eventosFiltrados.forEach((item) => {
-            (eventosFiltrados.length > 1) ? 
-                res.innerHTML += `
-                    <div class="container--resposta sucesso">
-                        <p><span class="cor--roxo">${item.tipo}</span>: ${item.evento}</p>
-                    </div>
-                ` : 
-                res.innerHTML = `
-                    <div class="container--resposta sucesso">
-                        <p><span class="cor--roxo">${item.tipo}</span>: ${item.evento}</p>
+        else if (tipo === "sucesso") {
+            containerMsg = `
+                    <div class="container--resposta ${tipo}">
+                        <p><span class="cor--roxo">${obj.tipo}</span>: ${obj.evento}</p>
                     </div>
                 `;
-        });
-    });
+        }
+        return containerMsg;
+    }
 
 });
